@@ -1455,8 +1455,8 @@ async function handleGenerateBackgroundPromptClick(suggestion: string = "") {
     updateChangeBackgroundBtnState();
 
     try {
-        // FIX: Use process.env.API_KEY as per coding guidelines.
-        const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
+        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
+        const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
         const base64 = originalImage.base64;
 
         const imagePart = {
@@ -1504,8 +1504,8 @@ async function handleChangeBackgroundClick() {
     `;
 
     try {
-        // FIX: Use process.env.API_KEY as per coding guidelines.
-        const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
+        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
+        const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
         const promptEl = document.getElementById('background-prompt-input') as HTMLTextAreaElement;
         
         const parts = [];
@@ -1605,8 +1605,8 @@ async function handleRestoreClick() {
     `;
 
     try {
-        // FIX: Use process.env.API_KEY as per coding guidelines.
-        const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
+        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
+        const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
 
         const colorizeEl = document.getElementById('colorize-checkbox') as HTMLInputElement;
         const faceRotateEl = document.getElementById('face-rotate-checkbox') as HTMLInputElement;
@@ -1899,8 +1899,8 @@ async function handleInpaintClick() {
     `;
 
     try {
-        // FIX: Use process.env.API_KEY as per coding guidelines.
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
+        const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
         
         // The mask is already white on a transparent background, which works well.
         const maskBase64 = inpaintMaskCanvas.toDataURL('image/png').split(',')[1];
@@ -2248,8 +2248,8 @@ function handleAnalyzeClick() {
         updateGenerateButtonState();
 
         try {
-            // FIX: Use process.env.API_KEY as per coding guidelines.
-            const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
+            // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
+            const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
             const base64 = await fileToBase64(file);
 
             const imagePart = {
@@ -2291,8 +2291,8 @@ async function handleGenerateClick() {
     `;
 
     try {
-        // FIX: Use process.env.API_KEY as per coding guidelines.
-        const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
+        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
+        const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
 
         if (uploadedFiles.length > 0) {
             // EDIT MODE
