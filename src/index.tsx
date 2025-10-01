@@ -109,6 +109,11 @@ let lastUsedPrompt: string | null = null;
 // savedImages now holds object URLs, not data URLs, for better performance
 let savedImages: { url: string; id: string }[] = [];
 
+// Generation Limit State
+const GENERATION_LIMIT = 30;
+const GENERATION_COUNT_KEY = 'photobookAiGenerationCount';
+let generationCount = 0;
+
 
 // DOM Element references
 // These will be re-assigned when tabs are switched
@@ -139,6 +144,37 @@ let zoomedImgEl: HTMLImageElement;
 let modalCloseBtnEl: HTMLElement;
 let tabContentEl: HTMLElement;
 let savedImagesGridEl: HTMLElement;
+
+/**
+ * Updates the UI to show the remaining number of generations.
+ */
+function updateRemainingCountDisplay() {
+    const remainingEl = document.getElementById('remaining-generations');
+    if (remainingEl) {
+        const remaining = Math.max(0, GENERATION_LIMIT - generationCount);
+        remainingEl.textContent = String(remaining);
+    }
+}
+
+/**
+ * Increments the generation count, saves it, and updates the UI.
+ */
+function incrementGenerationCount() {
+    generationCount++;
+    localStorage.setItem(GENERATION_COUNT_KEY, String(generationCount));
+    updateRemainingCountDisplay();
+
+    // Re-check and disable buttons if limit is now reached
+    if (generationCount >= GENERATION_LIMIT) {
+         const genButtons = document.querySelectorAll('#generate-btn, #change-background-btn, #restore-btn, #inpaint-btn');
+         genButtons.forEach(btn => {
+            if(btn) {
+                (btn as HTMLButtonElement).disabled = true;
+                btn.textContent = 'Đã hết lượt tạo ảnh';
+            }
+         });
+    }
+}
 
 
 /**
@@ -180,6 +216,10 @@ function App() {
             <img class="modal-content" id="zoomed-img" alt="Ảnh đã phóng to">
         </div>
     `;
+
+    // Load generation count from localStorage
+    const savedCount = localStorage.getItem(GENERATION_COUNT_KEY);
+    generationCount = savedCount ? parseInt(savedCount, 10) : 0;
 
     // Get references to common DOM elements
     outputEl = document.getElementById('output')!;
@@ -349,61 +389,237 @@ function renderGeneratorUI() {
         </div>
 
         <div class="sub-tabs">
-            <button class="sub-tab-button active" data-subtab="baby">Bé dưới 1 tuồi</button>
-            <button class="sub-tab-button" data-subtab="so-sinh">Bé sơ sinh</button>
-            <button class="sub-tab-button" data-subtab="trung-thu">Trung Thu</button>
+            <button class="sub-tab-button active" 	data-subtab="be-gai">Bé gái</button>
+            <button class="sub-tab-button" 			data-subtab="be-trai">Bé trai</button>
+            <button class="sub-tab-button" 			data-subtab="so-sinh">Sơ sinh</button>
+            <button class="sub-tab-button" 			data-subtab="trung-thu">Trung Thu</button>
         </div>
 
         <div id="sub-tab-content">
-            <div id="sub-tab-panel-so-sinh" class="sub-tab-panel">
+            
+             <div id="sub-tab-panel-be-gai" class="sub-tab-panel active">
                 <div class="templates-section">
-                    <label>Sơ sinh</label>
+                    <h2>Gần 1 tuổi</label>
                     <div class="template-buttons-container">
-                        <button id="baby-template-btn-1" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
+                        <button id="baby-template-btn-13" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby13.jpg" alt="">
+                            <span>Baby 13</span>
+                        </button>
+                        <button id="baby-template-btn-14" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby14.jpg" alt="">
+                            <span>Baby 14</span>
+                        </button>
+                        <button id="baby-template-btn-15" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby15.jpg" alt="">
+                            <span>Baby 15</span>
+                        </button>
+                        <button id="baby-template-btn-16" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby16.jpg" alt="">
+                            <span>Baby 16</span>
+                        </button>
+                        <button id="baby-template-btn-17" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby17.jpg" alt="">
+                            <span>Baby 17</span>
+                        </button>
+                        <button id="baby-template-btn-18" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby18.jpg" alt="">
+                            <span>Baby 18</span>
+                        </button>
+                         <button id="baby-template-btn-47" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby47.jpg" alt="">
+                            <span>Baby 47</span>
+                        </button>
+                        <button id="baby-template-btn-48" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby48.jpg" alt="">
+                            <span>Baby 48</span>
+                        </button>
+                        <button id="baby-template-btn-49" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby49.jpg" alt="">
+                            <span>Baby 49</span>
+                        </button>
+                        <button id="baby-template-btn-50" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby50.jpg" alt="">
+                            <span>Baby 50</span>
+                        </button>
+                        <button id="baby-template-btn-19" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby19.jpg" alt="">
+                            <span>Baby 19</span>
+                        </button>
+                        <button id="baby-template-btn-20" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby20.jpg" alt="">
+                            <span>Baby 20</span>
+                        </button>
+                        <button id="baby-template-btn-21" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby21.jpg" alt="">
+                            <span>Baby 21</span>
+                        </button>
+                        <button id="baby-template-btn-22" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby22.jpg" alt="">
+                            <span>Baby 22</span>
+                        </button>
+                        <button id="baby-template-btn-23" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby23.jpg" alt="">
+                            <span>Baby 23</span>
+                        </button>
+                        <button id="baby-template-btn-24" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby24.jpg" alt="">
+                            <span>Baby 24</span>
+                        </button>
+                    </div>
+					<br><br>
+					<h2>1-3 tuổi</h2>
+                    <div class="template-buttons-container">
+                        <button id="baby-template-btn-40" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby40.jpg" alt="">
+                            <span>Baby 40</span>
+                        </button>
+                        <button id="baby-template-btn-41" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby41.jpg" alt="">
+                            <span>Baby 41</span>
+                        </button>
+                        <button id="baby-template-btn-42" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby42.jpg" alt="">
+                            <span>Baby 42</span>
+                        </button>
+                        <button id="baby-template-btn-43" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby43.jpg" alt="">
+                            <span>Baby 43</span>
+                        </button>
+                        <button id="baby-template-btn-44" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby44.jpg" alt="">
+                            <span>Baby 44</span>
+                        </button>
+                        <button id="baby-template-btn-45" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby45.jpg" alt="">
+                            <span>Baby 45</span>
+                        </button>
+                        <button id="baby-template-btn-46" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby46.jpg" alt="">
+                            <span>Baby 46</span>
+                        </button>
+                       
+                    </div>
+                </div>
+                
+                
+            </div>
+			<div id="sub-tab-panel-be-trai" class="sub-tab-panel">
+                <div class="templates-section">
+                    <h2>1-3 tuổi</h2>
+                    <div class="template-buttons-container">
+						 <button id="baby-template-btn-35" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby35.jpg" alt="">
+                            <span>Baby 35</span>
+                        </button>
+                        <button id="baby-template-btn-36" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby36.jpg" alt="">
+                            <span>Baby 36</span>
+                        </button>
+                        <button id="baby-template-btn-37" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby37.jpg" alt="">
+                            <span>Baby 37</span>
+                        </button>
+                        <button id="baby-template-btn-38" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby38.jpg" alt="">
+                            <span>Baby 38</span>
+                        </button>
+                        <button id="baby-template-btn-39" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby39.jpg" alt="">
+                            <span>Baby 39</span>
+                        </button>
+					</div>
+					<h2>3-6 tuổi</h2>
+                    <div class="template-buttons-container">
+						<button id="baby-template-btn-26" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby26.jpg" alt="">
+                            <span>Baby 26</span>
+                        </button>
+                        <button id="baby-template-btn-27" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby27.jpg" alt="">
+                            <span>Baby 27</span>
+                        </button>
+                        <button id="baby-template-btn-28" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby28.jpg" alt="">
+                            <span>Baby 28</span>
+                        </button>
+                        <button id="baby-template-btn-29" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby29.jpg" alt="">
+                            <span>Baby 29</span>
+                        </button>
+                        <button id="baby-template-btn-30" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby30.jpg" alt="">
+                            <span>Baby 30</span>
+                        </button>
+                        <button id="baby-template-btn-31" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby31.jpg" alt="">
+                            <span>Baby 31</span>
+                        </button>
+                        <button id="baby-template-btn-32" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby32.jpg" alt="">
+                            <span>Baby 32</span>
+                        </button>
+                        <button id="baby-template-btn-33" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby33.jpg" alt="">
+                            <span>Baby 33</span>
+                        </button>
+                        <button id="baby-template-btn-34" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby34.jpg" alt="">
+                            <span>Baby 34</span>
+                        </button>
+                       
+					
+					</div>
+				</div>
+			</div>
+			<div id="sub-tab-panel-so-sinh" class="sub-tab-panel">
+                <div class="templates-section">
+                    <h2>Sơ sinh</h2>
+                    <div class="template-buttons-container">
+                        <button id="baby-template-btn-1" class="template-button" aria-label="">
                             <img src="https://canvasvietnam.com/images/baby1.jpg" alt="">
                             <span>Baby 1</span>
                         </button>
-                        <button id="baby-template-btn-2" class="template-button" aria-label="Sử dụng mẫu Trung Thu 2">
+                        <button id="baby-template-btn-2" class="template-button" aria-label="2">
                             <img src="https://canvasvietnam.com/images/baby2.jpg" alt="">
                             <span>Baby 2</span>
                         </button>
-                        <button id="baby-template-btn-3" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
+                        <button id="baby-template-btn-3" class="template-button" aria-label="3">
                             <img src="https://canvasvietnam.com/images/baby3.jpg" alt="">
                             <span>Baby 3</span>
                         </button>
-                        <button id="baby-template-btn-4" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
+                        <button id="baby-template-btn-4" class="template-button" aria-label="3">
                             <img src="https://canvasvietnam.com/images/baby4.jpg" alt="">
                             <span>Baby 4</span>
                         </button>
-                        <button id="baby-template-btn-5" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
+                        <button id="baby-template-btn-5" class="template-button" aria-label="3">
                             <img src="https://canvasvietnam.com/images/baby5.jpg" alt="">
                             <span>Baby 5</span>
                         </button>
-                        <button id="baby-template-btn-6" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
+                        <button id="baby-template-btn-6" class="template-button" aria-label="">
                             <img src="https://canvasvietnam.com/images/baby6.jpg" alt="">
                             <span>Baby 6</span>
                         </button>
-                        <button id="baby-template-btn-7" class="template-button" aria-label="Sử dụng mẫu Trung Thu 2">
+                        <button id="baby-template-btn-7" class="template-button" aria-label="2">
                             <img src="https://canvasvietnam.com/images/baby7.jpg" alt="">
                             <span>Baby 7</span>
                         </button>
-                        <button id="baby-template-btn-8" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
+                        <button id="baby-template-btn-8" class="template-button" aria-label="3">
                             <img src="https://canvasvietnam.com/images/baby8.jpg" alt="">
                             <span>Baby 8</span>
                         </button>
-                        <button id="baby-template-btn-9" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
+                        <button id="baby-template-btn-9" class="template-button" aria-label="3">
                             <img src="https://canvasvietnam.com/images/baby9.jpg" alt="">
                             <span>Baby 9</span>
                         </button>
-                        <button id="baby-template-btn-10" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby10.jpg" alt="">
-                            <span>Baby 10</span>
+                        <button id="baby-template-btn-25" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby25.jpg" alt="">
+                            <span>Baby 25</span>
                         </button>
-                        <button id="baby-template-btn-11" class="template-button" aria-label="Sử dụng mẫu Trung Thu 2">
+                        <button id="baby-template-btn-11" class="template-button" aria-label="2">
                             <img src="https://canvasvietnam.com/images/baby11.jpg" alt="">
                             <span>Baby 11</span>
                         </button>
-                        <button id="baby-template-btn-12" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
+                        <button id="baby-template-btn-12" class="template-button" aria-label="3">
                             <img src="https://canvasvietnam.com/images/baby12.jpg" alt="">
                             <span>Baby 12</span>
                         </button>
@@ -412,126 +628,71 @@ function renderGeneratorUI() {
             </div>
             <div id="sub-tab-panel-trung-thu" class="sub-tab-panel">
                 <div class="templates-section">
-                    <label>Bé trai</label>
+                    <h2>Bé trai</h2>
                     <div class="template-buttons-container">
-                        <button id="trung-thu-template-btn-1" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/trungthu1.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-1" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/trungthu1.jpg" alt="">
                             <span>Dưới 1 tuổi</span>
                         </button>
-                        <button id="trung-thu-template-btn-2" class="template-button" aria-label="Sử dụng mẫu Trung Thu 2">
-                            <img src="https://canvasvietnam.com/images/trungthu2.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-2" class="template-button" aria-label="2">
+                            <img src="https://canvasvietnam.com/images/trungthu2.jpg" alt="">
                             <span>1-3 tuổi</span>
                         </button>
-                        <button id="trung-thu-template-btn-3" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu3.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-3" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu3.jpg" alt="">
                             <span>1-3 tuổi</span>
                         </button>
 
-                        <button id="trung-thu-template-btn-6" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu6.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-6" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu6.jpg" alt="">
                             <span>1-3 tuổi</span>
                         </button>
                     </div>
                 </div>
 
                 <div class="templates-section">
-                    <label>Bé gái</label>
+                    <h2>Bé gái</h2>
                     <div class="template-buttons-container">
                         
-                        <button id="trung-thu-template-btn-4" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu4.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-4" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu4.jpg" alt="">
                             <span>Dưới 1 tuổi</span>
                         </button>
-                        <button id="trung-thu-template-btn-5" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu5.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-5" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu5.jpg" alt="">
                             <span>3-5 tuổi</span>
                         </button>
-                        <button id="trung-thu-template-btn-7" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu7.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-7" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu7.jpg" alt="">
                             <span>5-10 tuổi</span>
                         </button>
-                        <button id="trung-thu-template-btn-8" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu8.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-8" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu8.jpg" alt="">
                             <span>3-5 tuổi</span>
                         </button>
-                        <button id="trung-thu-template-btn-9" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu9.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-9" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu9.jpg" alt="">
                             <span>5-10 tuổi</span>
                         </button>
-                        <button id="trung-thu-template-btn-10" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu10.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-10" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu10.jpg" alt="">
                             <span>5-10 tuổi</span>
                         </button>
-                        <button id="trung-thu-template-btn-11" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu11.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-11" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu11.jpg" alt="">
                             <span>5-10 tuổi</span>
                         </button>
-                        <button id="trung-thu-template-btn-12" class="template-button" aria-label="Sử dụng mẫu Trung Thu 3">
-                            <img src="https://canvasvietnam.com/images/trungthu12.jpg" alt="Bé trai mặc đồ Trung Thu, xung quanh là đèn lồng và đầu lân">
+                        <button id="trung-thu-template-btn-12" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/trungthu12.jpg" alt="">
                             <span>1-3 tuổi</span>
                         </button>
                     </div>
                 </div>
             </div>
-             <div id="sub-tab-panel-baby" class="sub-tab-panel active">
-                <div class="templates-section">
-                    <label>Gần 1 tuổi</label>
-                    <div class="template-buttons-container">
-                        <button id="baby-template-btn-13" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby13.jpg" alt="">
-                            <span>Baby 13</span>
-                        </button>
-                        <button id="baby-template-btn-14" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby14.jpg" alt="">
-                            <span>Baby 14</span>
-                        </button>
-                        <button id="baby-template-btn-15" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby15.jpg" alt="">
-                            <span>Baby 15</span>
-                        </button>
-                        <button id="baby-template-btn-16" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby16.jpg" alt="">
-                            <span>Baby 16</span>
-                        </button>
-                        <button id="baby-template-btn-17" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby17.jpg" alt="">
-                            <span>Baby 17</span>
-                        </button>
-                        <button id="baby-template-btn-18" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby18.jpg" alt="">
-                            <span>Baby 18</span>
-                        </button>
-                        <button id="baby-template-btn-19" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby19.jpg" alt="">
-                            <span>Baby 19</span>
-                        </button>
-                        <button id="baby-template-btn-20" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby20.jpg" alt="">
-                            <span>Baby 20</span>
-                        </button>
-                        <button id="baby-template-btn-21" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby21.jpg" alt="">
-                            <span>Baby 21</span>
-                        </button>
-                        <button id="baby-template-btn-22" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby22.jpg" alt="">
-                            <span>Baby 22</span>
-                        </button>
-                        <button id="baby-template-btn-23" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby23.jpg" alt="">
-                            <span>Baby 23</span>
-                        </button>
-                        <button id="baby-template-btn-24" class="template-button" aria-label="Sử dụng mẫu Trung Thu 1">
-                            <img src="https://canvasvietnam.com/images/baby24.jpg" alt="">
-                            <span>Baby 24</span>
-                        </button>
-                    </div>
-                </div>
-                
-                
-            </div>
         </div>
-
+        <div class="generation-counter">
+            <p>Số lượt tạo còn lại: <span id="remaining-generations">${GENERATION_LIMIT - generationCount}</span>/${GENERATION_LIMIT}</p>
+        </div>
         <button id="generate-btn" disabled>Tạo ảnh</button>
     `;
 
@@ -583,6 +744,32 @@ function renderGeneratorUI() {
 	const babyTemplateBtn22 = document.getElementById('baby-template-btn-22')!;
 	const babyTemplateBtn23 = document.getElementById('baby-template-btn-23')!;
 	const babyTemplateBtn24 = document.getElementById('baby-template-btn-24')!;
+	const babyTemplateBtn25 = document.getElementById('baby-template-btn-25')!;
+	const babyTemplateBtn26 = document.getElementById('baby-template-btn-26')!;
+	const babyTemplateBtn27 = document.getElementById('baby-template-btn-27')!;
+	const babyTemplateBtn28 = document.getElementById('baby-template-btn-28')!;
+	const babyTemplateBtn29 = document.getElementById('baby-template-btn-29')!;
+	const babyTemplateBtn30 = document.getElementById('baby-template-btn-30')!;
+	const babyTemplateBtn31 = document.getElementById('baby-template-btn-31')!;
+	const babyTemplateBtn32 = document.getElementById('baby-template-btn-32')!;
+	const babyTemplateBtn33 = document.getElementById('baby-template-btn-33')!;
+	const babyTemplateBtn34 = document.getElementById('baby-template-btn-34')!;
+	const babyTemplateBtn35 = document.getElementById('baby-template-btn-35')!;
+	const babyTemplateBtn36 = document.getElementById('baby-template-btn-36')!;
+	const babyTemplateBtn37 = document.getElementById('baby-template-btn-37')!;
+	const babyTemplateBtn38 = document.getElementById('baby-template-btn-38')!;
+	const babyTemplateBtn39 = document.getElementById('baby-template-btn-39')!;
+	const babyTemplateBtn40 = document.getElementById('baby-template-btn-40')!;
+	const babyTemplateBtn41 = document.getElementById('baby-template-btn-41')!;
+	const babyTemplateBtn42 = document.getElementById('baby-template-btn-42')!;
+	const babyTemplateBtn43 = document.getElementById('baby-template-btn-43')!;
+	const babyTemplateBtn44 = document.getElementById('baby-template-btn-44')!;
+	const babyTemplateBtn45 = document.getElementById('baby-template-btn-45')!;
+	const babyTemplateBtn46 = document.getElementById('baby-template-btn-46')!;
+	const babyTemplateBtn47 = document.getElementById('baby-template-btn-47')!;
+	const babyTemplateBtn48 = document.getElementById('baby-template-btn-48')!;
+	const babyTemplateBtn49 = document.getElementById('baby-template-btn-49')!;
+	const babyTemplateBtn50 = document.getElementById('baby-template-btn-50')!;
 
 
     // Attach event listeners for this tab
@@ -986,6 +1173,343 @@ The lighting is soft, warm, and diffused studio light, creating gentle highlight
         }
     });
 
+    babyTemplateBtn25.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl, keep her facial features exactly as in the photo, create a ultra 8k, photorealistic portrait of her peacefully sleeping in a soft knitted pink onesie with wooden buttons, gently cradled in a light pink fabric hammock. Three plush star decorations float above the baby’s head, creating a dreamy night-sky atmosphere. The background is a smooth barbie pink color, giving a soft, calming, and magical feel. Ultra-realistic, professional newborn photography style, soft lighting, high detail, cozy and serene mood.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn26.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. This scene celebrates a monumental Minecraft achievement, capturing the epic moment of defeating the Ender Dragon.
+• Pose: A boy stands victorious on a high-tier block (like a glowing purpur block or obsidian), one foot raised in a triumphant stance. He holds a powerful enchanted diamond sword aloft in one hand, celebrating his victory. His expression is one of pride, strength, and pure accomplishment.
+• Outfit & Hair:
+• Top: A detailed, pixelated diamond armor chestplate, perhaps with some scratches from battle.
+• Bottoms: Matching diamond armor leggings.
+• Footwear: Diamond armor boots.
+• Hair: Swept back, looking wind-swept from the battle.
+• Backdrop & Color Theme: The desolate and dangerous landscape of "The End."
+• Main Background: A floating island made of obsidian, with jagged Ender stone formations and glowing End stone pillars. The Ender Dragon's head (a giant, pixelated prop) could be seen in the background, or perhaps the remnants of its final defeat. A menacing, dark purple sky with eerie, glowing stars.
+• Features: A small, pixelated, floating "painting" of the Ender Dragon's defeat. Scattered purpur blocks and Shulker boxes. A small collection of Ender Chests.
+• Lighting: The scene is lit by the eerie, otherworldly glow of Endermen's eyes, the glowing End stone, and the magical sparkle of enchanted items. The overall lighting is dark and dramatic, with a strong emphasis on purples and blues.
+• Color Palette: Dominated by dark purples, blacks, and greys, with vibrant pops of blue (for the diamond sword), pink (for Chorus plants), and the bright glow of End-themed blocks.
+• Props:
+• Tools/Weapons: A glowing, enchanted diamond sword held high in victory. A bow with an arrow (toy prop) resting on a block.
+• Mob Props: A few silent, menacing Endermen are visible in the distance.
+• Blocks: Foam blocks representing obsidian, purpur, and a glowing beacon.
+• Cake: A "Dragon Slayer" cake designed to look like a floating island of obsidian and Ender stone. Fondant details could include miniature Endermen, Chorus fruit, and a tiny Ender Dragon head. An "8" cake topper fashioned like an Ender Pearl or a Dragon Egg.
+• Signboard: A personalized signpost: "The Dragon Slayer" or "The Ender Dragon is Defeated!"
+• Birthday Decor: Balloons in dark colors (purple, black) with subtle green and pink accents. Gift boxes designed like Shulker boxes.
+• Style: High-resolution, 8K, highly photorealistic, capturing the triumphant feeling of a major in-game victory.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn27.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo and create The "Block Party Builder" Scene.
+This scene is pure joy and creative energy, celebrating the endless building possibilities of Minecraft.
+• Pose: A boy is surrounded by an explosion of colorful blocks, perhaps mid-air in a playful jump, or sitting on a giant, comfortable block. He's holding a variety of different blocks as if deciding what to build next, or has just finished placing one. His expression is one of pure, unadulterated happiness and creativity.
+• Outfit & Hair:
+• Top: A vibrant, multi-colored pixelated t-shirt, resembling a mosaic of various Minecraft blocks (wool, terracotta, concrete).
+• Bottoms: Comfortable, blocky cargo shorts or pants in a neutral tone (e.g., grey or brown).
+• Footwear: Oversized, blocky "builder boots" in bright primary colors.
+• Hair: Playfully messy, as if he's been joyfully jumping and building.
+• Backdrop & Color Theme: A fantastical, impossible landscape made entirely of diverse and brightly colored blocks.
+• Main Background: A floating island or a whimsical landscape constructed from giant, brightly colored wool blocks, concrete, terracotta, and prismarine. There are no limits to the colors and types of blocks used.
+• Dynamic Elements: Blocks appear to be falling or floating around him, creating a sense of movement and playful chaos. A rainbow bridge or a giant block-tree could be in the background.
+• Color Palette: A vibrant explosion of all colors – reds, blues, greens, yellows, purples, oranges – creating a cheerful, playful, and slightly surreal atmosphere.
+• Props:
+• Tools/Weapons: A giant, cartoonish "magic wand" (styled like an enchanted stick or command block wand) for building, or holding multiple different colorful blocks in his arms.
+• Plushies: Adorable, oversized Minecraft block plushies (e.g., a TNT block, a dirt block with grass on top, a crafting table) scattered around.
+• Blocks: Large, soft foam blocks of all colors and textures, forming seating, stairs, and playful structures.
+• Cake: A truly wild, multi-textured "patchwork" cake, with each tier or section resembling a different Minecraft block (e.g., one tier dirt, one tier crafting table, one tier TNT). An "8" cake topper made from colorful fondant blocks.
+• Signboard: A brightly colored, pixelated sign reading "Master's Block Party!"
+• Birthday Decor: Balloons shaped like giant Minecraft blocks (cube balloons), streamers made of pixelated patterns, and confetti shaped like different block types.
+• Style: High-resolution, 8K, photorealistic, but with a vibrant, playful, and slightly exaggerated quality to emphasize the fun and boundless creativity of building in Minecraft`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn28.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. Create an ultra 8K photorealistic studio portrait of a 5-year-old boy, keep his facial features, hair style, ski ntone the same as the photo. His facial features are captured with lifelike precision, making him appear incredibly real. He is dressed as JJ from Cocomelon, in his signature bright green romper with red and yellow accents and the iconic watermelon logo, paired with photorealistic soft white sneakers. The boy is seated inside a highly realistic, bright yellow, cartoon-style school bus prop, playfully looking out the window with a natural and photorealistic expression. A large, friendly Cocomelon-style sun, rendered with realistic depth and lighting, is visible through the window. The bus is filled with various photorealistic Cocomelon character plushies (e.g., TomTom, YoYo, Cody), each with detailed textures and stitching, and musical instrument toys like a drum and a harmonica, rendered with realistic materials, are scattered around. The backdrop is a stunningly photorealistic, vibrant, animated outdoor scene with rolling green hills, a bright blue sky, and fluffy white clouds, giving the impression of a joyful journey. Soft, bright, and highly realistic lighting illuminates the scene, highlighting the cheerful atmosphere with ultra-high definition details.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn29.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. Create an ultra 8K photorealistic studio portrait of a 5-year-old boy, keep his facial features, skin tone, smile the same as the photo attached. His facial features are captured with lifelike precision, making him appear incredibly real. He is dressed as JJ from Cocomelon, wearing his bright green romper with red and yellow accents, and photorealistic soft white sneakers. The boy is kneeling playfully on a patch of highly realistic artificial grass, showing individual blades and natural variations, gently petting a fluffy, cartoon-style lamb plushie, rendered with incredibly soft, detailed wool texture. Around him are several other friendly photorealistic farm animal plushies (e.g., a cow, a pig, a chicken, all in a Cocomelon art style, showing realistic fabric and stitching details) and a small, colorful toy barn, rendered with realistic miniature wood textures. A miniature toy tractor, with realistic plastic and metal finishes, is parked nearby. The backdrop is a cheerful and bright photorealistic farmyard scene, featuring a red barn with detailed wood grain, a wooden fence with natural imperfections, lush green fields, and a clear blue sky with smiling cartoon clouds rendered with realistic cloud formations. The overall color theme is vibrant green, red, brown, and sky blue. Bright, natural-looking, and highly realistic studio lighting emphasizes the wholesome and playful farm atmosphere, showcasing ultra-high definition details`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn30.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. Create A highly realistic, full-length studio portrait of a 5-year-old boy, keep his hair, skin tone, and facial features the same as the photo attached. He is dressed as JJ from Cocomelon, wearing his bright green romper with red and yellow accents, and soft white sneakers. The boy is seated in a child's section of a brightly colored, cartoon-style toy shopping cart, with a wide, happy smile, holding a plastic fruit toy (like a banana or an apple). Around him in the shopping cart are various other colorful, oversized toy groceries such as a milk carton, bread, or a box of cereal, all designed in a friendly Cocomelon aesthetic. Two bald toddler plushies are positioned near the cart, perhaps 'helping' with the shopping. The backdrop is a cheerful and vibrant Cocomelon-inspired grocery store aisle, with colorful shelves stocked with playful, cartoon-style food items and a bright, inviting atmosphere. The overall color theme is a mix of bright primary colors and pastels. Soft, warm studio lighting illuminates the scene, emphasizing the fun and playful shopping experience.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn31.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. Create an ultra 8K photorealistic studio portrait of a 5-year-old boy, keep his facial features, smile, skin tone the same in the attached photo. His facial features are captured with lifelike precision, making him appear incredibly real. He is dressed as JJ from Cocomelon, wearing his bright green romper with red and yellow accents, and photorealistic soft white sneakers. The boy is kneeling on a patch of highly realistic artificial soil or brown textured mat, showing granular detail, holding up a cartoon-style plush carrot with a big, proud, and photorealistic smile. The carrot plushie itself is rendered with realistic fabric texture and subtle fiber details. Around him are various oversized, friendly-faced photorealistic plush vegetables (e.g., a corn on the cob with realistic kernel texture, a broccoli floret with detailed florets, a tomato with smooth, slightly reflective fabric, all in a Cocomelon art style). He has a small, child-sized watering can with realistic plastic sheen and a miniature garden trowel with realistic metal and plastic textures beside him. The backdrop is a vibrant and cheerful photorealistic Cocomelon garden scene, featuring tall green stalks with realistic leaf veins, colorful flowers with delicate petal textures, and a bright blue sky with smiling cartoon clouds, rendered with realistic cloud formations. The overall color theme is fresh green, earthy brown, and bright, inviting primary colors from the vegetables. Soft, diffused, natural-looking, and highly realistic studio lighting highlights the healthy and joyful gardening atmosphere, showcasing ultra-high definition details. `;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn32.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. Create an ultra 8K photorealistic studio portrait of a 5-year-old boy, keep his facial features, skin tone, smile the same as the attached photo. His facial features are captured with lifelike precision, making him appear incredibly real. He is dressed as JJ from Cocomelon, wearing his bright green romper with red and yellow accents, and photorealistic soft white sneakers. The boy is actively playing on a brightly colored, cartoon-style playground set, possibly a slide or a swing, with a joyful, energetic, and highly realistic expression. Other photorealistic Cocomelon character plushies (e.g., TomTom, YoYo, Cody, Nina), rendered with detailed fabric textures and stitching, are scattered around, appearing to also be playing on the playground. There's a soft, child-friendly ball with a realistic, slightly bumpy surface texture or a toy car with realistic plastic and reflective surfaces nearby. The backdrop is a vibrant photorealistic Cocomelon-style park or playground scene, featuring lush green grass with individually rendered blades, a few friendly-looking trees with detailed bark and leaf textures, and a bright blue sky with cheerful, smiling clouds rendered with photorealistic cloud formations. The overall color scheme is bright primary colors: red, yellow, blue, and green. Dynamic, bright, and highly realistic studio lighting emphasizes the lively and active playtime atmosphere, showcasing ultra-high definition details`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn33.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. Create an ultra 8K photorealistic studio portrait of a 5-years-old boy , keep his facial features, smile, skine tone the same in the attached photo. His facial features are captured with lifelike precision, making him appear incredibly real, complete with subtle wet-look skin details. He is dressed as JJ from Cocomelon, wearing a vibrant yellow Cocomelon-themed hooded towel or bathrobe with a watermelon print, rendered with realistic terry cloth texture and soft folds. The boy is sitting on the edge of a clean, cartoon-style bathtub, rendered with realistic ceramic sheen, filled with colorful, oversized bubble props that appear photorealistically iridescent and frothy (not real water, but visually convincing, detailed props). He is playfully splashing his hands into the 'bubbles' with realistic motion blur and water droplet effects, and holding a rubber duck toy, rendered with realistic plastic texture and highlights. Around the tub are various photorealistic bath toys like a toy boat with detailed plastic reflections, a plastic fish, and a Cocomelon-style soap bar prop, all showing realistic material properties. The backdrop is a bright and clean photorealistic Cocomelon-themed bathroom setting, with light blue tiled walls showing realistic grout lines and tile sheen, fluffy white cloud-shaped wall decals, and a cheerful yellow shower curtain with subtle Cocomelon patterns, rendered with realistic fabric texture. The primary color theme is pastel blue, yellow, and white. Soft, diffused, and highly realistic studio lighting creates a clean, airy, and fun 'bath time' ambiance, showcasing ultra-high definition details.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn34.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. Create An ultra 8K photorealistic studio portrait of a 5-year-old boy, keep his facial features, skin tone and smile the same as photo attached. His facial features are captured with lifelike precision, making him appear incredibly real. He is dressed as JJ from Cocomelon, wearing a cozy blue and white striped pajama set with a small watermelon detail, and photorealistic soft white socks. The boy is sitting comfortably on a soft, cloud-shaped rug, rendered with realistic texture, next to a photorealistic cartoon moon prop and several star-shaped cushions, each showing natural fabric folds and details. He is holding a small, glowing star nightlight, rendered with a realistic, soft glow. The backdrop is a serene, deep blue night sky adorned with sparkling, highly realistic stars, a large crescent moon with subtle surface details, and gentle, wispy clouds, all rendered with photorealistic depth and atmosphere. Various photorealistic Cocomelon baby character plushies are peacefully 'sleeping' around him on the cloud rug, showing realistic fabric and stitching. The lighting is soft, warm, and dim, photorealistic studio illumination, evoking a peaceful and dreamy bedtime story atmosphere with ultra-high definition details`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn35.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. 
+• Outfit: The little boy is dressed in a charming, vintage-inspired outfit: a light blue or cream-colored button-up shirt, a tiny brown vest, khaki shorts, and a little newsboy cap. Add a small, soft "camera" accessory around his neck.
+• Pose: He's sitting in a small, stylized vintage toy car (like a classic roadster or convertible, but child-sized). His hands are on the steering wheel, and he's looking back over his shoulder at the camera with a joyful, adventurous grin.
+• Backdrop & Props: A studio backdrop depicting a scenic open road winding through a gentle landscape (e.g., rolling hills, a few distant mountains). Props include a small, soft suitcase tied to the back of the toy car, a picnic basket with a checkered blanket, a few vintage-style road signs (e.g., "Route 2," "Adventure Awaits"), and balloons in muted, retro colors like dusty blue, cream, and olive green.
+• Optional Props: A small, friendly teddy bear wearing a tiny pair of sunglasses as a passenger, a map spread out on the ground, or a toy compass.
+• Style: High-resolution, 8K, photorealistic, with a slightly warm, nostalgic color palette.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn36.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo.  Create a high-quality, full-length portrait of the little boy dressed as a rugged rally driver or off-road adventurer: a practical, earth-toned (khaki, olive green, or brown) jumpsuit or cargo pants with a vest, a small pair of adventurer goggles pushed up onto his forehead, and sturdy-looking mini hiking boots.
+Pose: The little boy is standing next to or playfully climbing into a real, rugged off-road vehicle (e.g., a Jeep Wrangler, a Land Rover Defender, or a classic pickup truck) that looks ready for adventure. He's looking at the camera with a determined, adventurous grin, perhaps one hand on the tire or grabbing a handle.
+Backdrop & Props: A realistic, slightly wild outdoor setting, like a dirt road with some dust, sparse trees, or rocks, suggesting an off-road track. Props could include a spare tire mounted on the vehicle, a small toy shovel or pickaxe leaning against it, and a "Happy Birthday" banner made of rustic burlap or canvas with car tracks on it. Balloons in muted greens, browns, and oranges could be tied to the vehicle.
+Optional Props: A small "2" made from rough-hewn wood, a toy flashlight, or a small, pretend walkie-talkie.
+Style: High-resolution, 8K, photorealistic, with slightly dramatic, sun-drenched lighting to emphasize the adventurous feel, and a touch of grit to the environment.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn37.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo.  Create a high-quality, studio-inspired full-length portrait of the little boy dressed as a little mechanic or pit crew member: a toddler-friendly denim overall with a checkered shirt underneath, a small wrench or tool belt accessory, and a soft, adjustable mechanic's cap.
+Pose: The little boy is playfully "working" on a small, red toy car, perhaps kneeling beside it with a curious expression, looking up at the camera with a slight smile. One hand could be holding a toy wrench, gently touching the car.
+Backdrop & Props: A realistic garage or pit stop scene. Think brick walls or a corrugated metal backdrop, with shelves holding toy car parts (tires, steering wheels), oil cans (toy ones, of course!), and tools. Scattered around could be a few tire props, a checkered flag draped over a tool bench, and helium balloons in red, black, and white.
+Optional Props: A small "2" shaped balloon in a metallic finish, a small "Happy Birthday" banner with a car motif, or a small, vintage-style toolbox.
+Style: High-resolution, 8K, photorealistic, with soft, natural lighting to enhance the realistic feel.
+Here's another one, with a "Classic Race Track" theme:`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn38.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. 
+• Outfit: The little boy is dressed in a cute, toddler-friendly construction worker outfit: a yellow hard hat (soft and safe, of course!), an orange safety vest over a checkered or striped shirt, and denim overalls. Include small tool belt pouches with soft toy tools.
+• Pose: He's sitting on a pile of soft, oversized toy "dirt" (brown fabric or pillows) with a large, friendly-looking toy excavator next to him. One hand is reaching towards the excavator's scoop, and he's looking at the camera with a curious, slightly mischievous smile.
+• Backdrop & Props: A studio scene transformed into a playful construction site. Use a backdrop that looks like a sunny outdoor construction area with a bright blue sky. Props include toy dump trucks, traffic cones, yellow caution tape (soft fabric), building blocks, and balloons in yellow, orange, and black.
+• Optional Props: A small, child-safe wheelbarrow, "rocks" made of soft fabric, or a small sign that says "2 & Digging It!"
+• Style: High-resolution, 8K, photorealistic.
+Please have a letter Banner in the wall complimenting the theme "Happy! then in a little big font highlighting BIRTHDAY`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn39.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. Create a high-quality, full-length portrait of the little boy as if he's taking his "first driving lesson" in a fun, child-friendly way: a casual, comfortable outfit like a bright graphic t-shirt (maybe with a cartoon car or "Future Driver" text), soft jeans or joggers, and colorful sneakers. A small, soft learner's permit badge pinned to his shirt or a tiny, playful "L" plate could be seen somewhere.
+Pose: The little boy is sitting in a realistic (but scaled-down) driving simulator setup or a very detailed toy car that has a dashboard, steering wheel, and pedals. He's intently focused on the "road" ahead, perhaps with a slightly concentrated or excited expression, mimicking driving. His hands are firmly on the steering wheel.
+Backdrop & Props: A playful, semi-realistic indoor or outdoor scene. For indoor, it could be a brightly lit play area with a "road" mat, soft building blocks forming a city, or even a simple green screen backdrop. For outdoor, a stylized park setting with a winding path. Props include soft traffic cones, toy traffic lights, a "speed limit 2" sign, and balloons in primary colors (red, blue, yellow, green) scattered around.
+Optional Props: A tiny pair of aviator sunglasses on the dashboard, a small toy car "license plate" with "BASTE 2" on it, or a playful "Driver in Training" banner.
+Style: High-resolution, 8K, photorealistic, with bright, inviting lighting that emphasizes fun and learning, and a clean, cheerful aesthetic`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn40.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. 
+• Fashion: A flowing, floor-length gown in a deep, velvety red, designed with intricate rose petal detailing on the bodice and a voluminous skirt that mimics a blooming rose.
+• Hairpiece: A dramatic headpiece featuring oversized, realistic red roses intertwined with delicate thorns and dew drops.
+• Props: A vintage, ornate lace umbrella held delicately, casting soft shadows, and scattered rose petals on the ground.
+• Mood: Romantic, opulent, slightly mysterious.
+• Background: A lush, slightly overgrown rose garden at dusk, with soft, golden hour lighting.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn41.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Create a ultra realistic, 8K high resolution photo of the 3 year old girl in the photo , keeping her facial features, hair look and smile genuinely the same and natural
+• Fashion: A light, airy, empire-waist sundress in soft whites and creams, adorned with embroidered daisies and subtle green leaf accents. The fabric should appear soft and breezy.
+• Hairpiece: A delicate daisy chain crown woven into loose, wavy hair.
+• Props: A white, frilly parasol or a sheer, translucent umbrella allowing light to filter through, and a picnic basket filled with fresh flowers.
+• Mood: Playful, innocent, ethereal.
+• Background: A sun-drenched meadow bursting with daisies, with a soft-focus distant treeline`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn42.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Using the attached photo, create a portrait of a 3-year old baby girl , keep her facial features , smile and hair the same . She is standing barefoot, holding a sunflower umbrella above her head with both hands as if shielding herself playfully from the light. She is wearing a full, radiant long tutu styled flower-shaped dress made entirely of golden-yellow sunflower petals. Her short black straight thin hair is natural and loose , adorned with a large sunflower hairpiece that mirrors the dress. The background is a warm golden-yellow tone, blending harmoniously with the sunflower theme, airy and minimalist, with subtle textures and soft glowing light for an elegant, timeless studio portrait. High-resolution, 8K, photorealistic style`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn43.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Create an ultra realistic, 8K high resolution photo of the 3-year-old girl, keeping her facial features, hair look, and smile genuinely the same and natural.
+• Fashion: A delicate, perhaps slightly ruffled, dress in a soft blush pink, ivory, or pale green, made from a lightweight fabric like cotton or linen.
+• Hairpiece: A small cluster of fragrant pink rosebuds woven into a simple braid or pinned gently in her tousled curls.
+• Props: A small, antique-looking teacup and saucer, or a miniature storybook with a floral cover.
+• Mood: Sweet, serene, a touch ethereal, embodying innocence and delicate beauty.
+• Background: Nestled within a lush bower of blooming real pink roses, perhaps with some climbing vines and dappled sunlight filtering through the foliage, creating a soft, romantic and garden vibe atmosphere. make the backgroud in a real rose farm`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn44.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Using the attached photo, create a portrait of a 3-year old baby girl , keep her facial features , smile and hair the same . She is standing barefoot, holding a sunflower umbrella above her head with both hands as if shielding herself playfully from the light. She is wearing a full, radiant long tutu styled flower-shaped dress made entirely of golden-yellow sunflower petals. Her short black straight thin hair is natural and loose , adorned with a large sunflower hairpiece that mirrors the dress. The background is a warm golden-yellow tone, blending harmoniously with the sunflower theme, airy and minimalist, with subtle textures and soft glowing light for an elegant, timeless studio portrait. High-resolution, 8K, photorealistic style`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn45.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Using the attached photo, create a portrait of a 3 year old baby girl , keep her facial features , smile and hair the same. She is seated sideways on a small natural wooden stool, both hands gently holding a rose umbrella resting upright beside her. She is barefoot. She is wearing a full, dramatic flower-shaped long tutu dress made entirely of deep red roses. A large red rose hairpiece crowns her head, echoing the elegance of the dress. The background is a soft deep-red gradient, blending seamlessly with the rose theme, airy and minimalist, with subtle textures and gentle light for a bold yet timeless studio portrait. High-resolution, 8K, photorealistic style. `;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn46.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Using the attached photo, create a portrait of a 3-year old baby girl sitting gracefully on the floor with one knee bent and her hands gently resting on her lap. She is barefoot, her short black straight thin hair kept natural and loose. She is wearing a full, elegant flower-shaped tutu styled dress made entirely of delicate pink cherry blossoms. A large cherry blossom hairpiece crowns her head, and she holds a soft parasol made of cherry blossoms tilted slightly over her shoulder. The background blends in soft pink tones, airy and minimalist, with subtle textures and gentle light for a serene, timeless studio portrait. High-resolution, 8K, photorealistic style. `;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn47.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Create a high-quality, photorealistic studio portrait of a sweet 6-month-old baby girl in the photo. Keep her facial features are clearly visible, natural, and expressive. She has short, fine baby hair.
+Outfit & Accessories:
+• A charming, pastel-colored romper or onesie with delicate, subtle macaron-inspired prints. The fabric should be soft, comfortable, and age-appropriate (e.g., light cotton). Colors: a gentle ivory, pale peach, or soft mint.
+• Soft, tiny white knit booties or bare feet.
+• A delicate, thin lace headband with a tiny fabric bow in a matching pastel hue.
+• She is gently nestled beside a small, intricately decorated picnic basket.
+• A soft, plush macaron toy (pastel-colored) is placed near her hand for her to playfully grasp.
+Pose & Expression:
+• The baby girl is lying comfortably on her tummy on a soft, plush, cream-colored picnic blanket, propped up slightly on her arms, looking at the camera with wide, curious eyes and a sweet, gummy smile.
+Backdrop & Aesthetic:
+• A beautifully rendered outdoor garden backdrop, but with a dreamy, soft-focus quality. Imagine lush, pastel-hued flowers (like hydrangeas or cherry blossoms) in the background, a hint of soft green foliage.
+• The overall palette is soft pastels, creating a serene and elegant 'macaron garden' feel.
+• Scattered realistic, soft, oversized macaron props (not edible) are playfully placed around her on the blanket.
+Lighting & Composition:
+• Soft, warm, natural-looking studio lighting, mimicking gentle afternoon sun. It should create subtle highlights and a slightly ethereal glow around her, with very soft shadows.
+• A slightly elevated, close-up composition, capturing her face, upper body, and interaction with the plush macaron, with the serene backdrop gently framing her.
+Mood & Vibe:
+• Whimsical, sweet, and pure, evoking a sense of innocent charm and a delightful, gentle macaron-filled dream for a baby.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn48.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Generate a high-quality, photorealistic studio portrait of a sweet 6-month-old baby girl in the attached photo. Her facial features are bright, natural, and full of charming baby expressions. She has short, fine baby hair.
+Outfit & Accessories:
+• A miniature, realistic baker's-style onesie or bloomers set: a tiny, soft white chef's hat (gently placed, perhaps on a headband), a small white bib-style apron over a pastel-striped onesie (e.g., soft yellow and white, or light blue and white).
+• Bare feet or soft, white knit socks.
+• She is gently reaching towards a small, wooden pastry board.
+• On the pastry board are several perfectly formed, realistic plush macarons and a tiny, clean wooden spoon.
+Pose & Expression:
+• The baby girl is sitting up with support (unseen props or soft cushions), leaning slightly forward, with her hands gently reaching towards the plush macarons on the pastry board.
+• Her expression is curious and engaged, with a lovely baby smile, as if fascinated by the colorful treats.
+Backdrop & Aesthetic:
+• A realistic and inviting macaron shop interior backdrop. Imagine light-colored wooden shelves filled with rows of beautifully arranged, realistic macaron towers and glass cloches. A subtle, vintage-style chalkboard menu is visible.
+• The colors are clean, bright, and pastel-focused, creating a cozy and artisanal atmosphere.
+• Small, soft, elegant decorative elements like a tiny, plush teacup or a pastel flower are subtly placed.
+Lighting & Composition:
+• Bright, even, and inviting studio lighting, simulating natural light coming through a large shop window. It should illuminate her face clearly and highlight the textures of her outfit and the macaron props.
+• A close-up to medium-shot composition, focusing on her upper body and hands as she interacts with the props, with the charming shop environment as a soft backdrop.
+Mood & Vibe:
+• Playful, endearing, and sweet, capturing the innocence of a baby in a charming, realistic macaron bakery setting.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn49.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Create a high-quality, photorealistic studio portrait of a sweet 6-month-old baby girl in the photo attached. Her facial features are precious, natural, and slightly dreamy. She has short, fine baby hair.
+Outfit & Accessories:
+• A whimsical, light-as-air romper made of soft tulle or chiffon in a multi-pastel ombre (from light pink to soft blue to mint green). The fabric should be delicate and comfortable for an infant.
+• Soft, shimmering silver or gold baby ballet slippers or bare feet.
+• Her head is adorned with a delicate, thin band featuring tiny, realistic fabric macarons.
+• A soft, large, plush macaron toy (pastel-colored) is nestled close to her.
+Pose & Expression:
+• The baby girl is lying comfortably on her back on a very soft, plush, cloud-like surface (e.g., white faux fur or fluffy blankets). Her arms are gently relaxed, and she is looking upwards with a serene, slightly sleepy, and peaceful expression, perhaps a tiny, contented smile.
+Backdrop & Aesthetic:
+• A fantastical 'Macaron Dreamland' backdrop. Imagine an ethereal sky with wispy, macaron-shaped clouds (softly glowing). Large, realistic macaron props (plush, not edible) are gently positioned around her, appearing to float.
+• The overall color scheme is soft, muted pastels with a hint of shimmer, creating a magical and otherworldly feel.
+• The cloud-like surface beneath her blends seamlessly with the dreamy background.
+Lighting & Composition:
+• Soft, diffused, magical studio lighting that creates a gentle, warm glow, as if bathed in moonlight or a soft, glowing dawn. Think subtle highlights and a very soft, even light that enhances the dreamlike quality.
+• A top-down or slightly elevated close-up composition, focusing on her face and the delicate setting, making the floating macarons part of her magical slumber.
+Mood & Vibe:
+• Dreamy, enchanting, and utterly magical, evoking a sense of sweet innocence and a whimsical macaron cloud-filled slumber.`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
+    babyTemplateBtn50.addEventListener('click', () => {
+        if (promptInputEl) {
+            const prompt = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. Using the attached photo of the 6-month-old baby girl , keep her facial features close to reality and make it original. Create a high-quality, studio-inspired full-length portrait of the little girl dressed in a macaron-themed outfit: a layered pastel pink, lavender, and mint tulle dress with embroidered macaron designs, soft cream or pink shoes, and a tiny macaron-shaped hair clip. Include an abundance of macaron plushies, from oversized macarons to mini ones, scattered around her and placed throughout the backdrop for an immersive “macaron garden.”
+The backdrop is a toddler-friendly studio scene: large pastel macaron props forming the main background, soft floor mats in coordinating pastel tones, and plush macaron stacks, towers, and scattered pieces to create a whimsical, playful garden effect. Add subtle glittering accents to mimic sugar dust or edible shimmer, enhancing the magical dessert atmosphere. Soft, bright studio lighting highlights the colorful and sweet aesthetic.
+Pose: The little girl sitting cross-legged in the center of the plush macaron garden, holding a large pastel macaron plush in her lap, while reaching for a smaller macaron plush with her other hand. Head slightly tilted toward the camera, with a naturally aesthetic, soft closed-mouth smile and bright, curious eyes. Optional props: tiny floating pastel sprinkles, miniature tea sets, or pastel balloons to enhance the whimsical, sweet vibe. Capture the playful, abundant, and charming essence of the macaron theme`;
+            promptInputEl.value = prompt;
+            promptInputEl.dispatchEvent(new Event('input')); // To update button state
+        }
+    });
+
 
     // Add logic for highlighting template buttons
     document.querySelectorAll('.template-button').forEach(button => {
@@ -1043,6 +1567,9 @@ function renderBackgroundChangerUI() {
         </div>
         <textarea id="background-prompt-input" placeholder="Ví dụ: Một bãi biển nhiệt đới lúc hoàng hôn"></textarea>
         
+        <div class="generation-counter">
+            <p>Số lượt tạo còn lại: <span id="remaining-generations">${GENERATION_LIMIT - generationCount}</span>/${GENERATION_LIMIT}</p>
+        </div>
         <button id="change-background-btn" disabled>Thay nền</button>
     `;
 
@@ -1153,6 +1680,9 @@ function renderRestorationUI() {
             </div>
         </div>
         
+        <div class="generation-counter">
+            <p>Số lượt tạo còn lại: <span id="remaining-generations">${GENERATION_LIMIT - generationCount}</span>/${GENERATION_LIMIT}</p>
+        </div>
         <button id="restore-btn" disabled>Phục hồi ảnh</button>
     `;
     
@@ -1219,6 +1749,9 @@ function renderInpaintUI() {
         </div>
         <textarea id="inpaint-prompt-input" placeholder="Ví dụ: Thêm một chiếc mũ cao bồi"></textarea>
         
+        <div class="generation-counter">
+            <p>Số lượt tạo còn lại: <span id="remaining-generations">${GENERATION_LIMIT - generationCount}</span>/${GENERATION_LIMIT}</p>
+        </div>
         <button id="inpaint-btn" disabled>Chỉnh sửa ảnh</button>
     `;
 
@@ -1383,6 +1916,12 @@ function updateChangeBackgroundBtnState() {
     const promptEl = document.getElementById('background-prompt-input') as HTMLTextAreaElement | null;
     if (!btn || !promptEl) return;
 
+    if (generationCount >= GENERATION_LIMIT) {
+        btn.disabled = true;
+        btn.textContent = 'Đã hết lượt tạo ảnh';
+        return;
+    }
+
     // Logic: Disable prompt if background image exists
     if (backgroundImage) {
         promptEl.disabled = true;
@@ -1404,6 +1943,13 @@ function updateChangeBackgroundBtnState() {
 function updateRestoreButtonState() {
      const btn = document.getElementById('restore-btn') as HTMLButtonElement | null;
      if (!btn) return;
+
+     if (generationCount >= GENERATION_LIMIT) {
+        btn.disabled = true;
+        btn.textContent = 'Đã hết lượt tạo ảnh';
+        return;
+     }
+
      btn.disabled = isLoading || !restorationImage;
 }
 
@@ -1414,6 +1960,12 @@ function updateInpaintButtonState() {
     const btn = document.getElementById('inpaint-btn') as HTMLButtonElement | null;
     const promptEl = document.getElementById('inpaint-prompt-input') as HTMLTextAreaElement | null;
     if (!btn || !promptEl || !inpaintMaskCanvas) return;
+
+    if (generationCount >= GENERATION_LIMIT) {
+        btn.disabled = true;
+        btn.textContent = 'Đã hết lượt tạo ảnh';
+        return;
+    }
 
     const hasImage = !!inpaintImage;
     const hasPrompt = promptEl.value.trim() !== '';
@@ -1455,7 +2007,6 @@ async function handleGenerateBackgroundPromptClick(suggestion: string = "") {
     updateChangeBackgroundBtnState();
 
     try {
-        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
         const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
         const base64 = originalImage.base64;
 
@@ -1496,6 +2047,10 @@ async function handleGenerateBackgroundPromptClick(suggestion: string = "") {
  */
 async function handleChangeBackgroundClick() {
      if (isLoading || !originalImage) return;
+     if (generationCount >= GENERATION_LIMIT) {
+        alert('Bạn đã hết lượt tạo ảnh miễn phí.');
+        return;
+    }
     isLoading = true;
     updateChangeBackgroundBtnState();
     outputEl.innerHTML = `
@@ -1504,7 +2059,6 @@ async function handleChangeBackgroundClick() {
     `;
 
     try {
-        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
         const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
         const promptEl = document.getElementById('background-prompt-input') as HTMLTextAreaElement;
         
@@ -1573,6 +2127,7 @@ async function handleChangeBackgroundClick() {
             lastGeneratedImageUrl = imageUrls[0];
             imageUrls.forEach(handleSaveImage);
             renderOutput(createImageGrid(imageUrls));
+            incrementGenerationCount();
         } else {
              if (safetyFlagged) {
                  renderOutput(`<p class="error">Nội dung đã bị chặn do chính sách an toàn. Vui lòng thử một mô tả hoặc hình ảnh khác.</p>`);
@@ -1597,6 +2152,10 @@ async function handleChangeBackgroundClick() {
  */
 async function handleRestoreClick() {
     if (isLoading || !restorationImage) return;
+    if (generationCount >= GENERATION_LIMIT) {
+        alert('Bạn đã hết lượt tạo ảnh miễn phí.');
+        return;
+    }
     isLoading = true;
     updateRestoreButtonState();
     outputEl.innerHTML = `
@@ -1605,7 +2164,6 @@ async function handleRestoreClick() {
     `;
 
     try {
-        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
         const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
 
         const colorizeEl = document.getElementById('colorize-checkbox') as HTMLInputElement;
@@ -1677,6 +2235,7 @@ async function handleRestoreClick() {
             lastGeneratedImageUrl = imageUrls[0];
             imageUrls.forEach(handleSaveImage);
             renderOutput(createImageGrid(imageUrls));
+            incrementGenerationCount();
         } else {
              if (safetyFlagged) {
                  renderOutput(`<p class="error">Nội dung đã bị chặn do chính sách an toàn. Vui lòng thử một mô tả hoặc hình ảnh khác.</p>`);
@@ -1887,6 +2446,10 @@ function handleClearMask() {
 
 async function handleInpaintClick() {
     if (isLoading || !inpaintImage || !inpaintMaskCanvas) return;
+    if (generationCount >= GENERATION_LIMIT) {
+        alert('Bạn đã hết lượt tạo ảnh miễn phí.');
+        return;
+    }
 
     const promptEl = document.getElementById('inpaint-prompt-input') as HTMLTextAreaElement;
     if (!promptEl || promptEl.value.trim() === '') return;
@@ -1899,7 +2462,6 @@ async function handleInpaintClick() {
     `;
 
     try {
-        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
         const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
         
         // The mask is already white on a transparent background, which works well.
@@ -1957,6 +2519,7 @@ async function handleInpaintClick() {
             lastGeneratedImageUrl = imageUrls[0];
             imageUrls.forEach(handleSaveImage);
             renderOutput(createImageGrid(imageUrls));
+            incrementGenerationCount();
         } else {
              if (safetyFlagged) {
                  renderOutput(`<p class="error">Nội dung đã bị chặn do chính sách an toàn. Vui lòng thử một mô tả hoặc hình ảnh khác.</p>`);
@@ -2064,6 +2627,11 @@ function updateUiForMode() {
 
 function updateGenerateButtonState() {
     if (activeTab !== 'generate' || !generateBtnEl || !promptInputEl) return;
+    if (generationCount >= GENERATION_LIMIT) {
+        generateBtnEl.disabled = true;
+        generateBtnEl.textContent = 'Đã hết lượt tạo ảnh';
+        return;
+    }
     generateBtnEl.disabled = promptInputEl.value.trim() === '' || isLoading;
     updateUiForMode();
 }
@@ -2248,7 +2816,6 @@ function handleAnalyzeClick() {
         updateGenerateButtonState();
 
         try {
-            // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
             const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
             const base64 = await fileToBase64(file);
 
@@ -2283,6 +2850,10 @@ function handleAnalyzeClick() {
 
 async function handleGenerateClick() {
     if (isLoading || !promptInputEl) return;
+    if (generationCount >= GENERATION_LIMIT) {
+        alert('Bạn đã hết lượt tạo ảnh miễn phí.');
+        return;
+    }
     isLoading = true;
     updateGenerateButtonState();
     outputEl.innerHTML = `
@@ -2291,7 +2862,6 @@ async function handleGenerateClick() {
     `;
 
     try {
-        // FIX: Use import.meta.env.VITE_API_KEY as per coding guidelines.
         const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
 
         if (uploadedFiles.length > 0) {
@@ -2340,6 +2910,7 @@ async function handleGenerateClick() {
                 lastGeneratedImageUrl = imageUrls[0];
                 imageUrls.forEach(handleSaveImage);
                 renderOutput(createImageGrid(imageUrls));
+                incrementGenerationCount();
             } else {
                  if (safetyFlagged) {
                      renderOutput(`<p class="error">Nội dung đã bị chặn do chính sách an toàn. Vui lòng thử một mô tả hoặc hình ảnh khác.</p>`);
@@ -2367,6 +2938,7 @@ async function handleGenerateClick() {
                 lastGeneratedImageUrl = imageUrls[0];
                 imageUrls.forEach(handleSaveImage);
                 renderOutput(createImageGrid(imageUrls));
+                incrementGenerationCount();
             } else {
                 renderOutput(`<p class="error">Không thể tạo ảnh từ mô tả. Điều này có thể do chính sách an toàn.</p>`);
             }
