@@ -510,17 +510,25 @@ function renderGeneratorUI() {
                             <img src="https://canvasvietnam.com/images/baby18.jpg" alt="">
                             <span>Baby 18</span>
                         </button>
-                         <button id="baby-template-btn-47" class="template-button" aria-label="">
+                        <button id="baby-template-btn-49" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby49.jpg" alt="">
+                            <span>Baby 49</span>
+                        </button>
+                        <button id="baby-template-btn-70" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby70.jpg" alt="">
+                            <span>Baby 70</span>
+                        </button>
+                    </div>
+					<br>
+					<h2>1-3 tuổi</h2>
+                    <div class="template-buttons-container">
+						<button id="baby-template-btn-47" class="template-button" aria-label="">
                             <img src="https://canvasvietnam.com/images/baby47.jpg" alt="">
                             <span>Baby 47</span>
                         </button>
                         <button id="baby-template-btn-48" class="template-button" aria-label="">
                             <img src="https://canvasvietnam.com/images/baby48.jpg" alt="">
                             <span>Baby 48</span>
-                        </button>
-                        <button id="baby-template-btn-49" class="template-button" aria-label="">
-                            <img src="https://canvasvietnam.com/images/baby49.jpg" alt="">
-                            <span>Baby 49</span>
                         </button>
                         <button id="baby-template-btn-50" class="template-button" aria-label="">
                             <img src="https://canvasvietnam.com/images/baby50.jpg" alt="">
@@ -550,9 +558,53 @@ function renderGeneratorUI() {
                             <img src="https://canvasvietnam.com/images/baby24.jpg" alt="">
                             <span>Baby 24</span>
                         </button>
-                    </div>
+						<button id="baby-template-btn-50" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby50.jpg" alt="">
+                            <span>Baby 50</span>
+                        </button>
+						<button id="baby-template-btn-71" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby71.jpg" alt="">
+                            <span>Baby 71</span>
+                        </button>
+                        <button id="baby-template-btn-72" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby72.jpg" alt="">
+                            <span>Baby 72</span>
+                        </button>
+                        <button id="baby-template-btn-73" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby73.jpg" alt="">
+                            <span>Baby 73</span>
+                        </button>
+                        <button id="baby-template-btn-74" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby74.jpg" alt="">
+                            <span>Baby 74</span>
+                        </button>
+                        <button id="baby-template-btn-75" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby75.jpg" alt="">
+                            <span>Baby 75</span>
+                        </button>
+                        <button id="baby-template-btn-76" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby76.jpg" alt="">
+                            <span>Baby 76</span>
+                        </button>
+                       <button id="baby-template-btn-77" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby77.jpg" alt="">
+                            <span>Baby 77</span>
+                        </button>
+                        <button id="baby-template-btn-78" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby78.jpg" alt="">
+                            <span>Baby 78</span>
+                        </button>
+                        <button id="baby-template-btn-79" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby79.jpg" alt="">
+                            <span>Baby 79</span>
+                        </button>
+                        <button id="baby-template-btn-4" class="template-button" aria-label="3">
+                            <img src="https://canvasvietnam.com/images/baby4.jpg" alt="">
+                            <span>Baby 4</span>
+                        </button>
+					</div>
 					<br>
-					<h2>1-3 tuổi</h2>
+					<h2>3-5 tuổi</h2>
                     <div class="template-buttons-container">
                         <button id="baby-template-btn-40" class="template-button" aria-label="">
                             <img src="https://canvasvietnam.com/images/baby40.jpg" alt="">
@@ -582,7 +634,8 @@ function renderGeneratorUI() {
                             <img src="https://canvasvietnam.com/images/baby46.jpg" alt="">
                             <span>Baby 46</span>
                         </button>
-                       
+						
+                        
                     </div>
                 </div>
                 
@@ -596,7 +649,39 @@ function renderGeneratorUI() {
                             <img src="https://canvasvietnam.com/images/baby35.jpg" alt="">
                             <span>Baby 35</span>
                         </button>
-                        <button id="baby-template-btn-36" class="template-button" aria-label="">
+                        <button id="baby-template-btn-39" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby39.jpg" alt="">
+                            <span>Baby 39</span>
+                        </button>
+						<button id="baby-template-btn-51" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby51.jpg" alt="">
+                            <span>Baby 51</span>
+                        </button>
+                        <button id="baby-template-btn-52" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby52.jpg" alt="">
+                            <span>Baby 52</span>
+                        </button>
+                        <button id="baby-template-btn-53" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby53.jpg" alt="">
+                            <span>Baby 53</span>
+                        </button>
+                        <button id="baby-template-btn-54" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby54.jpg" alt="">
+                            <span>Baby 54</span>
+                        </button>
+                        <button id="baby-template-btn-55" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby55.jpg" alt="">
+                            <span>Baby 55</span>
+                        </button>
+                        <button id="baby-template-btn-56" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby56.jpg" alt="">
+                            <span>Baby 56</span>
+                        </button>
+                       <button id="baby-template-btn-57" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby57.jpg" alt="">
+                            <span>Baby 57</span>
+                        </button>
+						<button id="baby-template-btn-36" class="template-button" aria-label="">
                             <img src="https://canvasvietnam.com/images/baby36.jpg" alt="">
                             <span>Baby 36</span>
                         </button>
@@ -607,10 +692,6 @@ function renderGeneratorUI() {
                         <button id="baby-template-btn-38" class="template-button" aria-label="">
                             <img src="https://canvasvietnam.com/images/baby38.jpg" alt="">
                             <span>Baby 38</span>
-                        </button>
-                        <button id="baby-template-btn-39" class="template-button" aria-label="">
-                            <img src="https://canvasvietnam.com/images/baby39.jpg" alt="">
-                            <span>Baby 39</span>
                         </button>
 					</div>
 					<br>
@@ -673,10 +754,6 @@ function renderGeneratorUI() {
                             <img src="https://canvasvietnam.com/images/baby3.jpg" alt="">
                             <span>Baby 3</span>
                         </button>
-                        <button id="baby-template-btn-4" class="template-button" aria-label="3">
-                            <img src="https://canvasvietnam.com/images/baby4.jpg" alt="">
-                            <span>Baby 4</span>
-                        </button>
                         <button id="baby-template-btn-5" class="template-button" aria-label="3">
                             <img src="https://canvasvietnam.com/images/baby5.jpg" alt="">
                             <span>Baby 5</span>
@@ -708,6 +785,54 @@ function renderGeneratorUI() {
                         <button id="baby-template-btn-12" class="template-button" aria-label="3">
                             <img src="https://canvasvietnam.com/images/baby12.jpg" alt="">
                             <span>Baby 12</span>
+                        </button>
+						<button id="baby-template-btn-58" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby58.jpg" alt="">
+                            <span>Baby 58</span>
+                        </button>
+                        <button id="baby-template-btn-59" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby59.jpg" alt="">
+                            <span>Baby 59</span>
+                        </button>
+						
+                        <button id="baby-template-btn-60" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby60.jpg" alt="">
+                            <span>Baby 60</span>
+                        </button><button id="baby-template-btn-61" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby61.jpg" alt="">
+                            <span>Baby 61</span>
+                        </button>
+                        <button id="baby-template-btn-62" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby62.jpg" alt="">
+                            <span>Baby 62</span>
+                        </button>
+                        <button id="baby-template-btn-63" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby63.jpg" alt="">
+                            <span>Baby 63</span>
+                        </button>
+                        <button id="baby-template-btn-64" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby64.jpg" alt="">
+                            <span>Baby 64</span>
+                        </button>
+                        <button id="baby-template-btn-65" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby65.jpg" alt="">
+                            <span>Baby 65</span>
+                        </button>
+                        <button id="baby-template-btn-66" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby66.jpg" alt="">
+                            <span>Baby 66</span>
+                        </button>
+                       <button id="baby-template-btn-67" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby67.jpg" alt="">
+                            <span>Baby 67</span>
+                        </button>
+                        <button id="baby-template-btn-68" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby68.jpg" alt="">
+                            <span>Baby 68</span>
+                        </button>
+                        <button id="baby-template-btn-69" class="template-button" aria-label="">
+                            <img src="https://canvasvietnam.com/images/baby69.jpg" alt="">
+                            <span>Baby 69</span>
                         </button>
                     </div>
                 </div>
@@ -855,6 +980,35 @@ function renderGeneratorUI() {
 	const babyTemplateBtn48 = document.getElementById('baby-template-btn-48')! as HTMLButtonElement;
 	const babyTemplateBtn49 = document.getElementById('baby-template-btn-49')! as HTMLButtonElement;
 	const babyTemplateBtn50 = document.getElementById('baby-template-btn-50')! as HTMLButtonElement;
+	const babyTemplateBtn51 = document.getElementById('baby-template-btn-51')! as HTMLButtonElement;
+	const babyTemplateBtn52 = document.getElementById('baby-template-btn-52')! as HTMLButtonElement;
+	const babyTemplateBtn53 = document.getElementById('baby-template-btn-53')! as HTMLButtonElement;
+	const babyTemplateBtn54 = document.getElementById('baby-template-btn-54')! as HTMLButtonElement;
+	const babyTemplateBtn55 = document.getElementById('baby-template-btn-55')! as HTMLButtonElement;
+	const babyTemplateBtn56 = document.getElementById('baby-template-btn-56')! as HTMLButtonElement;
+	const babyTemplateBtn57 = document.getElementById('baby-template-btn-57')! as HTMLButtonElement;
+	const babyTemplateBtn58 = document.getElementById('baby-template-btn-58')! as HTMLButtonElement;
+	const babyTemplateBtn59 = document.getElementById('baby-template-btn-59')! as HTMLButtonElement;
+	const babyTemplateBtn60 = document.getElementById('baby-template-btn-60')! as HTMLButtonElement;
+	const babyTemplateBtn61 = document.getElementById('baby-template-btn-61')! as HTMLButtonElement;
+	const babyTemplateBtn62 = document.getElementById('baby-template-btn-62')! as HTMLButtonElement;
+	const babyTemplateBtn63 = document.getElementById('baby-template-btn-63')! as HTMLButtonElement;
+	const babyTemplateBtn64 = document.getElementById('baby-template-btn-64')! as HTMLButtonElement;
+	const babyTemplateBtn65 = document.getElementById('baby-template-btn-65')! as HTMLButtonElement;
+	const babyTemplateBtn66 = document.getElementById('baby-template-btn-66')! as HTMLButtonElement;
+	const babyTemplateBtn67 = document.getElementById('baby-template-btn-67')! as HTMLButtonElement;
+	const babyTemplateBtn68 = document.getElementById('baby-template-btn-68')! as HTMLButtonElement;
+	const babyTemplateBtn69 = document.getElementById('baby-template-btn-69')! as HTMLButtonElement;
+	const babyTemplateBtn70 = document.getElementById('baby-template-btn-70')! as HTMLButtonElement;
+	const babyTemplateBtn71 = document.getElementById('baby-template-btn-71')! as HTMLButtonElement;
+	const babyTemplateBtn72 = document.getElementById('baby-template-btn-72')! as HTMLButtonElement;
+	const babyTemplateBtn73 = document.getElementById('baby-template-btn-73')! as HTMLButtonElement;
+	const babyTemplateBtn74 = document.getElementById('baby-template-btn-74')! as HTMLButtonElement;
+	const babyTemplateBtn75 = document.getElementById('baby-template-btn-75')! as HTMLButtonElement;
+	const babyTemplateBtn76 = document.getElementById('baby-template-btn-76')! as HTMLButtonElement;
+	const babyTemplateBtn77 = document.getElementById('baby-template-btn-77')! as HTMLButtonElement;
+	const babyTemplateBtn78 = document.getElementById('baby-template-btn-78')! as HTMLButtonElement;
+	const babyTemplateBtn79 = document.getElementById('baby-template-btn-79')! as HTMLButtonElement;
 
 
     // Attach event listeners for this tab
@@ -1031,7 +1185,7 @@ The lighting is soft, warm, and diffused studio light, creating gentle highlight
     const promptBaby22 = `Ultra-realistic milestone portrait of a baby girl with the exact real face from the uploaded photo. She is sitting upright comfortably in the center on a soft milestone blanket. She is dressed in a baby Aurora (Sleeping Beauty)-inspired outfit — a soft pink princess gown with elegant details, puffy skirt, and a tiny golden crown or tiara on her head. She is also wearing cute pink baby shoes to complete the Aurora princess look. Beside her is a decorated cake topped with a candle to mark the month. A wooden display board is placed next to her, showing the milestone greeting “Happy Birthday” in realistic letterboard style, just like an authentic milestone photoshoot setup. The background and props are Sleeping Beauty themed: a magical castle, enchanted forest, fairies’ sparkles, and dreamy floral decorations. Add cute themed stuffed props near her (like a plush spinning wheel, tiny fairy dolls, or a soft pink pillow) to enhance the Aurora theme. Soft, magical lighting, natural baby skin tones, high-resolution, photorealistic, professional milestone photoshoot style.`;
     babyTemplateBtn22.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn22, promptBaby22));
 
-    const promptBaby23 = `Ultra-realistic milestone portrait of a baby girl with the exact real face from the uploaded photo. She is sitting upright comfortably in the center on a soft milestone blanket. She is dressed in a baby Tinker Bell-inspired outfit — a sparkly green fairy dress with ruffled skirt, tiny fairy wings on her back, and a matching green headband or bun hairstyle with a little ribbon. She is also wearing cute green or silver baby shoes to complete the fairy look. Beside her is a decorated cake topped with a candle to mark the month. A wooden display board is placed next to her, showing the milestone greeting “Happy Birthday” in realistic letterboard style, just like an authentic milestone photoshoot setup. The background and props are Tinker Bell themed: magical forest details, glowing fairy dust sparkles, mushrooms, flowers, and tiny lanterns. Add cute themed stuffed props near her (like a plush fairy wand, mini Peter Pan hat, or small forest animals) to enhance the fairy vibe. Soft, magical lighting, natural baby skin tones, high-resolution, photorealistic, professional milestone photoshoot style.`;
+    const promptBaby23 = `Ultra-realistic milestone portrait of a baby girl with the exact real face from the uploaded photo. She is sitting upright comfortably in the center on a soft milestone blanket. She is dressed in a baby Tinker Bell-inspired outfit — a sparkly green fairy dress with ruffled skirt, tiny fairy wings on her back, and a matching green headband or bun hairstyle with a little ribbon. She is also wearing cute green or silver baby shoes to complete the fairy look. Beside her is a decorated cake topped with a candle to mark the month. A wooden display board is placed next to her, showing the milestone greeting “Happy Birthday” in realistic letterboard style, just like an authentic milestone photoshoot setup. The background and props are Tinker Bell themed: magical forest details, glowing fairy dust sparkles, mushrooms, flowers, and tiny lanterns. Add cute themed stuffed props near her (like a plush fairy wand, mini Peter Pan hat, or a small forest animals) to enhance the fairy vibe. Soft, magical lighting, natural baby skin tones, high-resolution, photorealistic, professional milestone photoshoot style.`;
     babyTemplateBtn23.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn23, promptBaby23));
 
     const promptBaby24 = `Ultra-realistic birthday portrait of a baby girl with the exact real face from the uploaded photo. She is sitting upright in the center, wearing a puffy pink princess dress with rosette details, sparkly bodice, and a big bow accent. She has long wavy black hair with a black ribbon headband. Around her is an enchanted forest theme setup: giant colorful butterflies, glowing fairy lights, lush flowers in pink, purple, and cream, and wooden log props. Behind her is a dreamy forest backdrop with tall trees and twinkling golden lights like fireflies. In front of her are large white marquee letters spelling out “ONE” to mark her first birthday. Add soft, whimsical lighting, magical atmosphere, and high-resolution detail for a professional studio photoshoot style`;
@@ -1243,6 +1397,95 @@ Mood & Vibe:
 The backdrop is a toddler-friendly studio scene: large pastel macaron props forming the main background, soft floor mats in coordinating pastel tones, and plush macaron stacks, towers, and scattered pieces to create a whimsical, playful garden effect. Add subtle glittering accents to mimic sugar dust or edible shimmer, enhancing the magical dessert atmosphere. Soft, bright studio lighting highlights the colorful and sweet aesthetic.
 Pose: The little girl sitting cross-legged in the center of the plush macaron garden, holding a large pastel macaron plush in her lap, while reaching for a smaller macaron plush with her other hand. Head slightly tilted toward the camera, with a naturally aesthetic, soft closed-mouth smile and bright, curious eyes. Optional props: tiny floating pastel sprinkles, miniature tea sets, or pastel balloons to enhance the whimsical, sweet vibe. Capture the playful, abundant, and charming essence of the macaron theme`;
     babyTemplateBtn50.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn50, promptBaby50));
+
+
+    const promptBaby51 = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. A joyful little boy celebrating his birthday in a dinosaur-themed photoshoot. Use the picture as reference. The background is a vibrant jungle with cartoon-style dinosaurs, balloons, and a “Happy Birthday” banner. The boy is wearing a cute explorer outfit with a party hat, smiling happily while holding a small dinosaur toy. Bright, colorful decorations, confetti, and a birthday cake with dinosaur toppers complete the scene. The atmosphere is fun, playful, and full of excitement.`;
+    babyTemplateBtn51.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn51, promptBaby51));
+
+    const promptBaby52 = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. A cheerful little boy celebrating his birthday in a Cocomelon-themed photoshoot. The background is bright and colorful with balloons, streamers, and Cocomelon characters around him. A big “Happy Birthday” banner is displayed, along with a cake decorated with Cocomelon designs. The boy is smiling, wearing a fun party outfit and party hat, surrounded by playful decorations that create a lively and joyful atmosphere.`;
+    babyTemplateBtn52.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn52, promptBaby52));
+
+    const promptBaby53 = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. A little boy celebrating his birthday in a fun jungle-themed photoshoot. Use the picture as reference. He is smiling and wearing an explorer outfit with a safari hat, surrounded by lush green trees, tropical leaves, and jungle animals like monkeys, parrots, and elephants in the background. The setup includes birthday balloons, a wooden sign with “Happy Birthday,” and a cake decorated with jungle designs. The overall style is vibrant, colorful, and playful, capturing the adventurous jungle vibe.`;
+    babyTemplateBtn53.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn53, promptBaby53));
+
+    const promptBaby54 = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. A happy little boy celebrating his birthday in a bear-themed photoshoot. Use the picture as reference. The background is decorated with cute teddy bears, balloons, and a “Happy Birthday” banner. The boy is wearing a stylish party outfit with a small bear headband or bear-print shirt, smiling while sitting beside a birthday cake topped with teddy bear designs. Soft pastel colors, confetti, and cozy decorations create a warm, playful, and joyful atmosphere.`;
+    babyTemplateBtn54.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn54, promptBaby54));
+
+    const promptBaby55 = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. A cheerful little boy celebrating his birthday in a colorful Coco Melon–themed setup, surrounded by bright balloons, rainbow decorations, playful cartoon-inspired backdrops, and a big cake with Coco Melon characters. Use the picture as reference.The boy is wearing a cute birthday outfit with suspenders and a party hat, smiling joyfully. The scene is vibrant, fun, and full of festive details, perfect for a kid’s birthday photoshoot.`;
+    babyTemplateBtn55.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn55, promptBaby55));
+
+    const promptBaby56 = `Ultra-realistic portrait of a baby boy with the exact real face from the uploaded photo. A cheerful birthday photoshoot of a little boy using this picture, dressed in a stylish birthday car racer outfit. The background is decorated with a car-themed setup: colorful balloons, toy race cars, a birthday cake shaped like a car, and a backdrop with a race track design. Bright and festive atmosphere, playful studio lighting, cinematic detail, high resolution, professional photography style.`;
+    babyTemplateBtn56.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn56, promptBaby56));
+
+    const promptBaby57 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A cozy and adorable Teddy Bear–themed 1st birthday photoshoot, set in a soft pastel backdrop with clouds, balloons, and fluffy decorations. The child is smiling, dressed in a cute teddy bear onesie or neutral-colored outfit with bear ears, sitting beside a large number “1” centerpiece decorated with teddy bears and ribbons. Surrounding props include plush teddy bears of different sizes, picnic baskets, wooden blocks, and soft blankets. A small party setup features a teddy bear birthday cake, cupcakes with bear faces, and balloons in beige, cream, and pastel brown. Warm, dreamy lighting creates a sweet and cuddly atmosphere, perfect for capturing this milestone. Use the picture as reference`;
+    babyTemplateBtn57.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn57, promptBaby57));
+
+    const promptBaby58 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping, wrapped in a soft pastel pink or lavender swaddle, wearing a delicate golden crown or tiara. She rests on a fluffy blanket inside a vintage-style cradle or basket surrounded by soft rose petals and vines. Background styled like an enchanted castle garden with dreamy florals, greenery, and twinkling fairy lights. Add subtle magical touches like a glowing spindle wheel silhouette or sparkles in the air. Soft, warm lighting creates a fairytale “Sleeping Beauty” atmosphere—pure, elegant, and enchanting. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn58.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn58, promptBaby58));
+
+    const promptBaby59 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping, swaddled in a soft neutral or pastel wrap with a delicate rainbow-colored blanket draped around her. She rests on a fluffy white cloud-like layer inside a cozy basket. Background styled with dreamy rainbow arches, soft clouds, and twinkling fairy lights. Add sweet details like a dainty rainbow headband or tiny star props. Gentle, glowing light creates a serene and magical atmosphere, symbolizing hope, love, and joy—the true beauty of a rainbow baby. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn59.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn59, promptBaby59));
+
+    const promptBaby60 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping in a cozy basket, wrapped in a soft pastel swaddle (blush pink, lavender, or ivory). Delicate butterflies in soft shades (pastel pink, lilac, and white) gently placed around her and a tiny butterfly clip or crown on her bonnet. Background styled as a dreamy garden with blooming flowers, vines, and soft greenery. Add whimsical touches like glowing fairy lights or butterflies appearing to “float” in the air. Soft, warm lighting to create a magical, serene, and enchanting butterfly garden atmosphere. Use the picture as reference. Do not change the facial expression.`;
+    babyTemplateBtn60.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn60, promptBaby60));
+	
+    const promptBaby61 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping, dressed in a delicate crochet mermaid tail outfit with soft pastel colors (aqua, lavender, blush). She rests on a fluffy aqua-blue blanket styled to look like ocean waves, inside a seashell-shaped basket or surrounded by soft netting. Props include starfish, seashells, pearls, and coral accents placed gently around her. Add a dainty seashell or pearl crown on her head for a magical touch. Background styled with dreamy underwater elements—bubbles, glowing coral reefs, and soft lighting—for an enchanting “little mermaid under the sea” atmosphere. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn61.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn61, promptBaby61));
+
+    const promptBaby62 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping, wrapped in a soft neutral or pastel swaddle, placed inside a rustic wooden basket lined with moss and cozy knitted blankets. She wears a delicate fairy crown or a tiny floral headband with soft greenery. Background styled as an enchanted woodland—moss, ferns, pinecones, and tiny mushrooms. Add whimsical fairy wings (delicate, translucent, pastel-colored) placed gently behind her. Subtle glowing fairy lights or sparkles in the background create a magical, storybook woodland fairy atmosphere. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn62.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn62, promptBaby62));
+
+    const promptBaby63 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping, swaddled in a soft pastel tone (choose one shade—blush pink, lavender, mint, or baby peach). Setup styled entirely in that same pastel hue for a dreamy monochrome look—blanket, backdrop, and tiny props all in matching tones. Baby rests on a fluffy textured layer (faux fur or knitted blanket) with subtle accents like a delicate bow headband or tiny floral crown in the same shade. Soft glowing light enhances the gentle pastel palette, creating an elegant, modern, and airy newborn portrait. Use the picture as reference. Do not change the facial expression.`;
+    babyTemplateBtn63.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn63, promptBaby63));
+
+    const promptBaby64 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping in a woven macramé hammock or rustic basket, lined with soft neutral blankets. Wrapped in a light beige or cream swaddle, with a delicate lace or crochet headband. Background styled with pampas grass, dried flowers, rattan accents, and soft earthy tones (cream, tan, blush). Add subtle boho details like a dreamcatcher, wooden beads, or a mini floral crown. Warm natural lighting for a soft, airy, and organic atmosphere that captures the timeless beauty of boho chic style. Use the picture as reference. Do not change the facial expression.`;
+    babyTemplateBtn64.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn64, promptBaby64));
+
+    const promptBaby65 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping, swaddled in a pastel pink or lavender wrap. She rests on a fluffy cotton-candy–like blanket inside a basket styled as a “candy bowl.” Surround her with oversized whimsical props—giant lollipops, candy canes, macarons, and gumdrops in soft pastel shades (pink, mint, yellow, lilac). Add playful touches like a tiny candy crown headband or a plush cupcake beside her. Background styled with swirls, sprinkles, and dreamy pastel backdrops for a magical Candyland atmosphere. Soft glowing lighting enhances the sweet, fairytale vibe. Use the picture as reference. Do not change the facial expression.`;
+    babyTemplateBtn65.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn65, promptBaby65));
+
+    const promptBaby66 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping, swaddled in a pastel pink or lavender wrap. She rests on a fluffy cotton-candy–like blanket inside a basket styled as a “candy bowl.” Surround her with oversized whimsical props—giant lollipops, candy canes, macarons, and gumdrops in soft pastel shades (pink, mint, yellow, lilac). Add playful touches like a tiny candy crown headband or a plush cupcake beside her. Background styled with swirls, sprinkles, and dreamy pastel backdrops for a magical Candyland atmosphere. Soft glowing lighting enhances the sweet, fairytale vibe. Use the picture as reference. Do not change the facial expression.`;
+    babyTemplateBtn66.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn66, promptBaby66));
+
+    const promptBaby67 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping, swaddled in a soft pastel wrap (blush pink, ivory, or lavender). She rests in a delicate basket or on a fluffy blanket surrounded by fresh blooms—roses, peonies, daisies, and greenery—arranged like a dreamy garden. Add a dainty floral crown or tiny flower headband for a sweet touch. Background styled with soft greenery, vines, and pastel florals to create an enchanting garden atmosphere. Gentle natural lighting enhances the softness, creating a magical, fresh, and timeless floral portrait. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn67.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn67, promptBaby67));
+
+    const promptBaby68 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A baby girl looks exactly the same in the inserted photo dressed as a little fairy princess with pastel butterfly wings, sleeping inside an oversized pink flower bloom. Surround her with glowing fireflies (soft bokeh lights) and a dreamy forest backdrop with sparkling magic dust. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn68.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn68, promptBaby68));
+
+    const promptBaby69 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A newborn baby girl peacefully sleeping, wrapped in a delicate swaddle in soft neutral tones (cream, beige, ivory, or light taupe). She rests on a fluffy knitted blanket inside a simple woven basket. Minimal, elegant props such as dried flowers, lace accents, or a small wooden name sign nearby. Background in warm, muted neutrals to keep the focus on the baby’s delicate features. Soft natural lighting for an airy, timeless, and angelic atmosphere, creating a pure and classic newborn portrait. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn69.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn69, promptBaby69));
+
+    const promptBaby70 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A delicate and dreamy floral photoshoot for a 3-month-old baby girl, set in a soft pastel backdrop with blooming flowers in shades of pink, cream, and lavender. The baby is lying peacefully in a wicker basket filled with flowers and soft fabric, dressed in a pastel pink tutu dress with a tiny floral headband. Gentle, glowing soft lighting creates an ethereal and angelic atmosphere, highlighting her innocence. The setup is styled to feel whimsical, tender, and fairytale-like, perfect for capturing her 3-month milestone. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn70.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn70, promptBaby70));
+	
+    const promptBaby71 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A magical mermaid-themed photoshoot for a 2-month-old baby girl, set in an under-the-sea backdrop with soft blue waves, glowing corals, and seashells. The baby is lying peacefully on a large seashell prop, dressed in a tiny mermaid tail outfit with a matching seashell or pearl headband. Around her are pearls, starfish, and ocean-inspired props, with gentle bubbles and shimmering light effects to create an enchanted underwater atmosphere. Soft, dreamy lighting highlights her innocence, capturing a fairytale mermaid moment. Use the picture as reference. Do not change the facial expression.`;
+    babyTemplateBtn71.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn71, promptBaby71));
+
+    const promptBaby72 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A whimsical little fairy photoshoot for a 4-month-old baby girl, set in a dreamy enchanted forest backdrop with glowing flowers, butterflies, and twinkling lights. The baby is lying or sitting gently on a soft cushion or moss-like blanket, dressed in a tiny pastel fairy dress with delicate wings and a floral headband. Props include sparkling lanterns, mushrooms, and fluttering butterflies around her. Soft, magical lighting creates an ethereal fairytale atmosphere, capturing the charm of a little woodland fairy. Use the picture as reference. Do not change the facial expression.`;
+    babyTemplateBtn72.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn72, promptBaby72));
+
+    const promptBaby73 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A colorful and whimsical Candyland-themed photoshoot for a 5-month-old baby, set in a bright candy wonderland backdrop with giant lollipops, candy canes, cupcakes, and gumdrops. The baby is smiling or lying on a soft pastel blanket shaped like candy floss, dressed in a cute candy-colored outfit or tutu with a matching headband/hat. A big number “5” centerpiece is surrounded by candy props. Balloons in pink, purple, yellow, and aqua float around, while playful lighting creates a sweet, magical, and fun atmosphere, perfect for celebrating this milestone. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn73.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn73, promptBaby73));
+
+    const promptBaby74 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A dreamy and whimsical butterfly garden–themed photoshoot for a 6-month-old baby girl, set in a soft pastel garden backdrop with flowers, vines, and colorful butterflies. The baby is lying or sitting on a fluffy blanket or cushioned nest, dressed in a cute pastel dress or romper with tiny butterfly wings or a floral headband. Around her are butterfly props, pastel balloons, and a small number “6” centerpiece to mark her half-birthday. Gentle, natural or golden lighting adds a magical glow, creating a soft, fairytale-like atmosphere perfect for a milestone shoot. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn74.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn74, promptBaby74));
+
+    const promptBaby75 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A sweet and cozy teddy bear picnic–themed photoshoot for a 7-month-old baby, set in a sunny garden or park backdrop with soft blankets, picnic baskets, and plush teddy bears all around. The baby is sitting happily in the middle, dressed in a cute picnic outfit (gingham dress, romper, or overalls), surrounded by balloons in soft pastel colors and a big number “7” centerpiece. Props include mini cakes, toy sandwiches, and tea sets to create a playful picnic vibe. Gentle, natural lighting adds a warm, whimsical, and heartwarming atmosphere, perfect for capturing this milestone. Use the picture as reference. Do not change the facial expression.`;
+    babyTemplateBtn75.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn75, promptBaby75));
+
+    const promptBaby76 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A stylish and cozy boho chic–themed photoshoot for an 8-month-old baby, set in a neutral-toned backdrop with pampas grass, macramé hangings, and woven baskets. The baby is sitting on a soft textured rug or rattan chair, dressed in a boho-inspired outfit (linen romper, lace dress, or earthy-toned clothes) with a flower crown or simple headband/hat. A big number “8” centerpiece is decorated in boho style, surrounded by dreamcatchers, wooden toys, and soft pillows. Warm, natural lighting creates a calm, earthy, and dreamy atmosphere, perfect for a chic milestone shoot. Use the picture as reference. Do not change the facial expression. `;
+    babyTemplateBtn76.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn76, promptBaby76));
+
+    const promptBaby77 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A magical woodland forest–themed photoshoot for a 9-month-old baby, set in a lush forest backdrop with tall trees, moss, and woodland animals like deer, rabbits, foxes, and owls (plush or props). The baby is sitting on a soft blanket or wooden crate, dressed in a cute forest-inspired outfit (earthy tones, overalls, or a floral romper with a tiny crown/hat). A big number “9” centerpiece is styled with leaves and twigs. Props include lanterns, mushrooms, pinecones, and fairy lights, creating a cozy, enchanted woodland atmosphere. Soft natural or golden-hour lighting enhances the dreamy forest feel. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn77.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn77, promptBaby77));
+
+    const promptBaby78 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A dreamy Disney princess–themed photoshoot for a 10-month-old baby girl, set in a fairytale castle backdrop with twinkling lights, flowers, and soft pastel drapes. The baby is dressed as a mini princess (Snow White, Cinderella, Belle, or Aurora) with a tiny tiara or crown. She is sitting on a royal-style chair or soft cushion, surrounded by a big number “10” centerpiece, Disney princess plush toys, and sparkly props. A decorated table features a princess-themed cake and pastel balloons in pink, gold, and lavender. Gentle, glowing lighting creates a magical, enchanting fairytale atmosphere. Use the picture as reference. Do not change the facial expression`;
+    babyTemplateBtn78.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn78, promptBaby78));
+
+    const promptBaby79 = `Ultra-realistic portrait of a baby girl with the exact real face from the uploaded photo. A sweet and playful Hello Kitty–inspired photoshoot for an 11-month-old baby girl, set in a pink, white, and pastel-themed backdrop with bows, hearts, and Hello Kitty cutouts. The baby is sitting on a soft fluffy rug or decorated chair, dressed in a cute pink tutu dress or Hello Kitty outfit with a matching bow headband. A big number “11” centerpiece is styled with Hello Kitty designs, surrounded by balloons in pink, white, and red, plush Hello Kitty dolls, and themed props. A small decorated table features a Hello Kitty cake and cupcakes. Soft, cheerful lighting creates a girly, fun, and kawaii-inspired atmosphere. Use the picture as reference. Do not change the facial expression.`;
+    babyTemplateBtn79.addEventListener('click', () => handleTemplateSelection(babyTemplateBtn79, promptBaby79));
+
 
     // Restore state
     renderImagePreviews();
@@ -1778,6 +2021,7 @@ async function handleChangeBackgroundClick() {
         <div class="spinner"></div>
         <p>Đang thay đổi nền... Việc này có thể mất một chút thời gian.</p>
     `;
+    scrollToResults();
 
     try {
         const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
@@ -1864,7 +2108,6 @@ async function handleChangeBackgroundClick() {
     } finally {
         isLoading = false;
         updateChangeBackgroundBtnState();
-        scrollToResults();
     }
 }
 
@@ -1883,6 +2126,7 @@ async function handleRestoreClick() {
         <div class="spinner"></div>
         <p>Đang phục hồi ảnh... Việc này có thể mất một chút thời gian.</p>
     `;
+    scrollToResults();
 
     try {
         const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
@@ -1972,7 +2216,6 @@ async function handleRestoreClick() {
     } finally {
         isLoading = false;
         updateRestoreButtonState();
-        scrollToResults();
     }
 }
 
@@ -2181,6 +2424,7 @@ async function handleInpaintClick() {
         <div class="spinner"></div>
         <p>Đang chỉnh sửa ảnh... Việc này có thể mất một chút thời gian.</p>
     `;
+    scrollToResults();
 
     try {
         const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
@@ -2256,7 +2500,6 @@ async function handleInpaintClick() {
     } finally {
         isLoading = false;
         updateInpaintButtonState();
-        scrollToResults();
     }
 }
 
@@ -2580,7 +2823,9 @@ async function handleGenerateClick() {
     outputEl.innerHTML = `
         <div class="spinner"></div>
         <p>Đang tạo ảnh... Việc này có thể mất một chút thời gian.</p>
+        <p><i>(Mẹo: nếu ảnh tạo ra chưa giống mặt, hãy chọn tấm khác thấy rõ mặt hơn và không cười)</i></p>
     `;
+    scrollToResults();
 
     try {
         const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_API_KEY});
@@ -2672,7 +2917,6 @@ async function handleGenerateClick() {
     } finally {
         isLoading = false;
         if(activeTab === 'generate') updateGenerateButtonState();
-        scrollToResults();
     }
 }
 
